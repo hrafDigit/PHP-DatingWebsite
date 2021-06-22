@@ -1,4 +1,4 @@
-<?php
+<?php 
 // tableau associatif des civilités avec la value et le text affiché
 $civilityList = ['Homme' => 'Homme', 'Femme' => 'Femme'];
 define('YEAR', date('Y') - 1);
@@ -111,11 +111,11 @@ if ((isset($_POST['login']))) {
 <!DOCTYPE html>
 <html lang="fr">
 <!-- ======================== HEAD ===========================-->
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous" />
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
@@ -123,6 +123,7 @@ if ((isset($_POST['login']))) {
 </head>
 
 <body>
+<?php include('header.inc.php'); ?>
     <?php
     if (empty($formErrors) && isset($_POST['register']) || isset($_POST['login'])) {
     ?>
@@ -183,9 +184,10 @@ if ((isset($_POST['login']))) {
 
     ?>
         <!-- ======================== MAIN===========================-->
+        
+        <section class="main">  
         <div class="container">
-            <div class="row mt-5">
-                <div class="col-6 card">
+                <div class="col-8 card">
                     <div class="card-body">
                         <!-- ======================== CONNEXION TABS===========================-->
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -219,7 +221,7 @@ if ((isset($_POST['login']))) {
                                     </div>
                                 </form>
                             </div>
-                            <!-- ======================== INSCCRIPTION ===========================-->
+                            <!-- ======================== INSCRIPTION ===========================-->
                             <div class="tab-pane fade show active" id="register" role="tabpanel" aria-labelledby="register-tab">
                                 <form action="" method="POST">
                                     <div class="mb-3">
@@ -283,9 +285,11 @@ if ((isset($_POST['login']))) {
                         </div>
                     </div>
                 </div>
+                 <img src="assets/img/lovers4x.png" alt="">
+                
             </div>
         </div>
     <?php } ?>
+    </section>
 </body>
-
 </html>

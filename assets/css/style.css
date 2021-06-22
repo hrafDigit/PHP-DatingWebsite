@@ -1,0 +1,48 @@
+    .navbar {
+        background: #238869;
+    }
+    
+    body {
+        background-color: #4C1392;
+    }
+    
+    .card-body {
+        background-color: #FD8B98;
+    }
+    
+    .card {
+        margin-top: 50px;
+    }
+    
+    label {
+        font-size: 20px;
+    }
+    
+    .logo {
+        z-index: 10;
+    }
+    
+    .container {
+        display: flex;
+        flex-direction: row;
+    }
+    
+    .container img {
+        width: 70%;
+        height: 70%;
+        margin-left: 60px;
+        padding-top: 200px;
+    }
+    
+    .tab1 {
+        margin-left: 100px;
+    }
+    
+    #login-tab {
+        margin-right: 300px;
+        font-size: 25px;
+    }
+    
+    #register-tab {
+        font-size: 25px;
+    }
