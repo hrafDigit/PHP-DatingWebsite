@@ -18,7 +18,7 @@
     <!-- Header avec navbar -->
     <header class="navbar navbar-expand-md navbar-nav bg-red-400 navbar-dark sticky-top shadow">
         <nav class="container-fluid flex-wrap">
-            <a class="navbar-brand text-light fst-italic" href="index.html" title="Page d'Accueil"><img
+            <a class="navbar-brand text-light fst-italic" href="index.php" title="Page d'Accueil"><img
                     src="assets/img/logo_small.png" width="300em" height="50%" alt="Logo" title="logo"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -28,7 +28,7 @@
             <div id="navbarNav" class="collapse navbar-collapse">
                 <ul class="navbar-nav">
                     <li class="nav-item active text-center">
-                        <a class="btn btn-outline-light rounded mx-2 my-1 p-2" href="index.html"
+                        <a class="btn btn-outline-light rounded mx-2 my-1 p-2" href="index.php"
                             title="Page d'Accueil">Accueil</a>
                     </li>
                     <li class="nav-item dropdown text-center">
@@ -63,7 +63,7 @@
     </header>
     <section>
         <div class="container-fluid" id="team">
-            <div class="row bg-primary px-5 pb-3 pb-4">
+            <div class="row px-5 pb-3 pb-4">
                 <h2 class="text-center text-light my-4 display-2 mb-5 mt-5" style="text-decoration: underline;">Une équipe à vos côtés
                 </h2>
                 <div class="col-lg-5">
@@ -87,8 +87,6 @@
                 class="fab fa-facebook"></i></a></div>
                 <ul class="list-inline">
                 <li class="list-inline-item"><a href="#">Accueil</a></li>
-                <li class="list-inline-item"><a href="#">Nos produits</a></li>
-                <li class="list-inline-item"><a href="#">Notre expertise</a></li>
                 <li class="list-inline-item"><a href="#">Nous contacter</a></li>
                 <li class="list-inline-item"><a href="mentionslegales.html">Mentions Legales</a></li>
                 </ul>
