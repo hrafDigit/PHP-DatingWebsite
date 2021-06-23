@@ -9,7 +9,7 @@
             <a class="btn btn-outline-light rounded mx-2 " aria-current="page" href="#">Recherche</a>
           </li>
           <li class="nav-item">
-            <a class="btn btn-outline-light rounded mx-2" href="#">Connexion</a>
+            <a class="btn btn-outline-light rounded mx-2" href="#login">Connexion</a>
           </li>
         </ul>
       </div>

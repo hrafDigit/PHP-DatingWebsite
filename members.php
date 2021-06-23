@@ -40,7 +40,7 @@
                 </ul>
                 <ul class="navbar-nav ms-md-auto">
                     <li class="nav-item text-center">
-                        <a class="btn btn-outline-light rounded mx-2 my-1 p-2" href="index.php" title="Connexion">Déconnexion <i class="fas fa-user"></i></a>
+                    <a class="btn btn-outline-light rounded mx-2 my-1 p-2" onclick="if (confirm('Voulez vous réellement vous déconnecté ?')) { location.replace('index.php'); <?php setcookie('user', ''); ?>}" title="Déonnexion">Déconnexion <i class="fas fa-user"></i></a>
                     </li>
                 </ul>
             </div>
@@ -48,15 +48,8 @@
     </header>
     <main>
 
-    <h4>Bonjour 
-        <?= $_SESSION['pseudo'] ?> .
-        <?= $_SESSION['civility'] ?> .
-        <?= $_SESSION['email'] ?> .
-        <?= $_SESSION['dob'] ?> .
-        <?= $_SESSION['city'] ?> ., 
-    bienvenue dans notre site de rencontre
-    </h4>
-
+    <h4>Bonjour <?= $_SESSION['pseudo'] ?> bienvenue dans notre site de rencontre </h4>
+   
     <?php
     $file='data.json';
     $data=file_get_contents($file);
@@ -74,10 +67,10 @@
                 <div>
                     <div class="row">
                         <div class="col-4">
-                            <img src="assets/img/<?= $image; ?>" alt="" width="180px" height="150px">
+                            <img src="assets/img/<?= $image; ?>" alt="" width="300px" height="300px">
                         </div>
                         <div class="col-6">
-                            <p> Bonjour je m'appelle  <?= $name; ?> , j'ai <?= $age ; ?> et j'habite à  <?= $city ; ?>  </p>
+                            <h5> Bonjour je m'appelle  <?= $name; ?> , j'ai <?= $age ; ?> et j'habite à  <?= $city ; ?>  </h5>
                         </div>
                     </div>
                     <?php } ?>
@@ -85,19 +78,7 @@
             </div>
         </div>
     </main>
-    <footer>
-        <div class="footer">
-            <div class="social"><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i
-                class="fab fa-snapchat"></i></a><a href="#"><i class="fab fa-twitter"></i></a><a href="#"><i
-                class="fab fa-facebook"></i></a></div>
-                <ul class="list-inline">
-                <li class="list-inline-item"><a href="#">Accueil</a></li>
-                <li class="list-inline-item"><a href="#">Nous contacter</a></li>
-                <li class="list-inline-item"><a href="mentionslegales.html">Mentions Legales</a></li>
-                </ul>
-                <p class="copyright">Computer experte © 2021</p>
-        </div>
-    </footer>
+   
     <script src="assets/js/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"

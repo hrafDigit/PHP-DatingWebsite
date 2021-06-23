@@ -166,7 +166,8 @@ if ((isset($_POST['submit']))) {
     <?php
     if (empty($formErrors) && isset($_POST['register']) || isset($_POST['login'])) {
         include('completeProfile.inc.php');
-    } else {
+    } 
+        else {
 
     ?>
         <!-- ======================== MAIN===========================-->
@@ -191,7 +192,7 @@ if ((isset($_POST['submit']))) {
                         </div>
                     </div>
                 </div>
-                <img src="assets/img/lovers4x.png" alt="">
+                <img src="assets/img/lovers4x.png" alt="" width=400px height=400px>
             </div>
             </div>
         <?php } ?>

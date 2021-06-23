@@ -1,9 +1,5 @@
     .navbar {
-        background: #238869;
-    }
-    
-    body {
-        background-color: #4C1392;
+        background: #FD8B98;
     }
     
     .card-body {
@@ -27,13 +23,6 @@
         flex-direction: row;
     }
     
-    .container img {
-        width: 70%;
-        height: 70%;
-        margin-left: 60px;
-        padding-top: 200px;
-    }
-    
     .tab1 {
         margin-left: 100px;
     }
@@ -45,8 +34,4 @@
     
     #register-tab {
         font-size: 25px;
-    }
-    
-    h4 {
-        color: aliceblue;
     }
