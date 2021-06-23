@@ -1,4 +1,3 @@
-<h3>Bonjour <?= $pseudo ?> ,Bienvenue dans notre site de rencontre </h3>
         <p> Veuillez completer votre profil </p>
         <form action="members.php" method="POST">
         <div class="col-6 card">

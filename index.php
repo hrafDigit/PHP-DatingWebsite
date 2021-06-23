@@ -18,8 +18,7 @@ if (isset($_POST['register'])) {
         $civility = htmlspecialchars($_POST['civility']);
         //On définit des variables de session
         $_SESSION['civility'] = $civility;
-        $_SESSION['civility'];
-    } else {
+        } else {
         $formErrors['civility'] = 'Veuillez sélectionner votre genre';
     }
     // Verification genre chercher choisie et cherche si existe dans le tableau civilityList
@@ -142,6 +141,8 @@ if ((isset($_POST['submit']))) {
         $formErrors['image'] = 'Veuillez sélectionner votre fichier';
     }
 }
+
+
 ?>
 
 <!DOCTYPE html>

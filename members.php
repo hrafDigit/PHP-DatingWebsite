@@ -1,3 +1,11 @@
+<?php
+ SESSION_START();
+ $pseudo = $_SESSION['pseudo'] ?? '';
+ $email = $_SESSION['email'] ?? '';
+ $dob = $_SESSION['dob'] ?? '';
+ $city = $_SESSION['city'] ?? '';
+ $civility = $_SESSION['civility'] ?? '';
+ ?>
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
 <head>
@@ -39,6 +47,16 @@
         </nav>
     </header>
     <main>
+
+    <h4>Bonjour 
+        <?= $_SESSION['pseudo'] ?> .
+        <?= $_SESSION['civility'] ?> .
+        <?= $_SESSION['email'] ?> .
+        <?= $_SESSION['dob'] ?> .
+        <?= $_SESSION['city'] ?> ., 
+    bienvenue dans notre site de rencontre
+    </h4>
+
     <?php
     $file='data.json';
     $data=file_get_contents($file);
