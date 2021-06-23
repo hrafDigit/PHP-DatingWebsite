@@ -59,11 +59,14 @@ if (isset($_POST['register'])) {
 // var_dump($_SESSION);
 
 // == sur la page #1 ==
-// $varFirstname = 'Jean-Michel';
-// $varLastname = 'Basquiat';
-// $_SESSION['firstname'] = $varFirstname;
-// $_SESSION['lastname'] = $varLastname;
-// var_dump($_SESSION);
+$varFirstname = 'Jean-Michel';
+$varLastname = 'Basquiat';
+$_SESSION['firstname'] = $varFirstname;
+$_SESSION['lastname'] = $varLastname;
+var_dump($_SESSION);
+
+
+$_SESSION['pseudo'] = $_POST['pseudo'];
 
 ?>
 <!-- ===================================================== -->

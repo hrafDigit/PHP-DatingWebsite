@@ -16,6 +16,8 @@ session_start();
 $gender = $_SESSION['gender'] ?? '';
 $pseudo = $_SESSION['pseudo'] ?? '';
 
+$_POST['pseudo'] = $_SESSION['pseudo'] ?? '';
+
 $varFirstname = $_SESSION['firstname'] ?? '';
 $varLastname = $_SESSION['lastname'] ?? '';
 var_dump($_SESSION);
