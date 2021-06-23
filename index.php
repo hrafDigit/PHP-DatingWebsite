@@ -1,4 +1,7 @@
-<?php 
+<?php
+SESSION_START();
+
+$_SESSION['age'] = 29;
 // tableau associatif des civilités avec la value et le text affiché
 $civilityList = ['Homme' => 'Homme', 'Femme' => 'Femme'];
 define('YEAR', date('Y') - 1);
@@ -13,12 +16,16 @@ if (isset($_POST['register'])) {
     // Verification civilité choisie et cherche si existe dans le tableau civilityList
     if (isset($_POST['civility']) && in_array($_POST['civility'], $civilityList)) {
         $civility = htmlspecialchars($_POST['civility']);
+        //On définit des variables de session
+        $_SESSION['civility'] = $civility;
+        $_SESSION['civility'];
     } else {
         $formErrors['civility'] = 'Veuillez sélectionner votre genre';
     }
     // Verification genre chercher choisie et cherche si existe dans le tableau civilityList
     if (isset($_POST['genre']) && in_array($_POST['genre'], $civilityList)) {
         $genre = htmlspecialchars($_POST['genre']);
+        $_SESSION['genre'] = $genre;
     } else {
         $formErrors['genre'] = 'Veuillez sélectionner votre genre que vous cherchez';
     }
@@ -28,6 +35,7 @@ if (isset($_POST['register'])) {
     if (!empty($_POST['pseudo'])) { // le champ n'est pas vide
         if (preg_match($regexPseudo, $_POST['pseudo'])) {
             $pseudo = htmlspecialchars($_POST['pseudo']);
+            $_SESSION['pseudo'] = $pseudo;
         } else {
             $formErrors['pseudo'] = 'Merci de renseigner un pseudo correct';
         }
@@ -41,6 +49,7 @@ if (isset($_POST['register'])) {
             if ($birthArray[0] <= YEAR  && $birthArray[0] >= 1900) {
                 if ($birthArray[0] < 2003) {
                     $dob = htmlspecialchars($_POST['dob']);
+                    $_SESSION['dob'] = $dob;
                 } else {
                     $formErrors['dob'] = 'Vous n\'êtes pas majeurs ';
                 }
@@ -59,6 +68,7 @@ if (isset($_POST['register'])) {
     if (!empty($_POST['city'])) { // le champ n'est pas vide
         if (preg_match($regexVille, $_POST['city'])) {
             $city = htmlspecialchars($_POST['city']);
+            $_SESSION['city'] = $city;
         } else {
             $formErrors['city'] = 'Merci de ne renseigner que des lettres et/ou tiret';
         }
@@ -79,6 +89,7 @@ if (isset($_POST['register'])) {
     if (!empty($_POST['email'])) {
         if (preg_match($regexMail, $_POST['email'])) {
             $email = htmlspecialchars($_POST['email']);
+            $_SESSION['email'] = $email;
         } else {
             $formErrors['email'] = 'Merci de renseigner une adresse mail correct';
         }
@@ -106,11 +117,37 @@ if ((isset($_POST['login']))) {
         $formErrors['pseudo'] = 'Veuillez entrer votre nom d\'utilisateur';
     }
 }
+if ((isset($_POST['submit']))) {
+    // Verification image choisie 
+    if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
+        if ($_FILES['image']['size'] <= 1500000) {
+            $file = $_FILES['image']['name'];
+            $tmpFile = $_FILES['image']['tmp_name'];
+            $typeMime = mime_content_type($tmpFile);
+            $allowedTypes = [
+                'jpeg' => 'image/jpeg',
+                'png' => 'image/png',
+                'gif' => 'image/gif',
+                'jpg' => 'image/jpeg'
+            ];
+            $extension = strtolower(pathinfo($file, PATHINFO_EXTENSION));
+            var_dump($extension);
+            if (!in_array($typeMime, $allowedTypes) || !array_key_exists($extension, $allowedTypes)) {
+                $formErrors['image'] = 'Ce fichier n\'est pas une image';
+            }
+        } else {
+            $formErrors['image'] = 'l\'image est trop lourd ou est mal téléchargé';
+        }
+    } else {
+        $formErrors['image'] = 'Veuillez sélectionner votre fichier';
+    }
+}
 ?>
 
 <!DOCTYPE html>
 <html lang="fr">
 <!-- ======================== HEAD ===========================-->
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -123,70 +160,17 @@ if ((isset($_POST['login']))) {
 </head>
 
 <body>
-<?php include('header.inc.php'); ?>
+   <!-- ==================== INCLUDE HEADER======================-->
+    <?php include('header.inc.php'); ?>
     <?php
     if (empty($formErrors) && isset($_POST['register']) || isset($_POST['login'])) {
-    ?>
-        <h3>Bonjour <?= $pseudo ?> ,Bienvenue dans notre site de rencontre </h3>
-        <p> Veuillez completer votre profil </p>
-        <div class="col-6 card">
-            <h4> Pratiquez vous un sport ? si oui cochez vos differents sports?</h4>
-            <div>
-                <div>
-                    <label for="choix-1"><input type="checkbox" id="choix-1" value="valeur-1">Athlétisme</label>
-                </div>
-
-                <div>
-                    <label for="choix-2"><input type="checkbox" id="choix-2" value="valeur-2">Cyclisme</label>
-                </div>
-
-                <div>
-                    <label for="choix-3"><input type="checkbox" id="choix-3" value="valeur-3">Sports de précision</label>
-                </div>
-
-                <div>
-                    <label for="choix-4"><input type="checkbox" id="choix-4" value="valeur-4">Sports mécaniques</label>
-                </div>
-            </div>
-            <h4> Parlez nous de votre personnalité</h4>
-            <div>
-                <div>
-                    <label for="choix-2-1"><input type="checkbox" id="choix-2-1" value="valeur-2-1">Altruiste</label>
-                </div>
-
-                <div>
-                    <label for="choix-2-2"><input type="checkbox" id="choix-2-2" value="valeur-2-2">Timide</label>
-                </div>
-
-                <div>
-                    <label for="choix-3-2"><input type="checkbox" id="choix-3-2" value="valeur-3-2">intraverti</label>
-                </div>
-
-                <div>
-                    <label for="choix-4-2"><input type="checkbox" id="choix-4-2" value="valeur-4-2">Extraverti</label>
-                </div>
-            </div>
-            <h4> Avez vous un/des animaux de compagnie?</h4>
-            <div>
-                <input type="radio" id="oui" name="oui" value="Oui">
-                <label for="oui">OUI</label>
-
-                <input type="radio" id="non" name="oui" value="Non">
-                <label for="non">NON</label>
-            </div>
-            <h4> Avez entré votre profil</h4>
-            <input type="file" name="image" />
-            <input type="submit" value="Envoyer" name="submit">
-        </div>
-    <?php
-
+        include('completeProfile.inc.php');
     } else {
 
     ?>
         <!-- ======================== MAIN===========================-->
-        
-        <section class="main">  
-        <div class="container">
+        <section class="main">
+            <div class="container">
                 <div class="col-8 card">
                     <div class="card-body">
                         <!-- ======================== CONNEXION TABS===========================-->
@@ -199,97 +183,18 @@ if ((isset($_POST['login']))) {
                             </li>
                         </ul>
                         <div class="tab-content" id="myTabContent">
-                            <!-- ======================== CONNEXION ===========================-->
-                            <div class="tab-pane fade" id="login" role="tabpanel" aria-labelledby="login-tab">
-                                <form action="" method="POST">
-                                    <div class="mb-3">
-                                        <label for="pseudo" class="form-label">Nom d'utilisateur : </label>
-                                        <input type="text" class="form-control <?= !isset($_POST['login']) ? null : (isset($formErrors['pseudo']) ? 'is-invalid' : 'is-valid') ?>" id="pseudo" name="pseudo" value="<?= !isset($pseudo) ? null : $pseudo ?>" />
-                                        <?php if (isset($formErrors['pseudo'])) { ?>
-                                            <p><small class="badge bg-danger"><?= $formErrors['pseudo'] ?></small></p>
-                                        <?php } ?>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="password" class="form-label">Mot de passe: </label>
-                                        <input type="password" class="form-control <?= !isset($_POST['login']) ? null : (isset($formErrors['password']) ? 'is-invalid' : 'is-valid') ?>" id="password" name="password" value="<?= !isset($password) ? null : $password ?>" />
-                                        <?php if (isset($formErrors['password'])) { ?>
-                                            <p><small class="badge bg-danger"><?= $formErrors['password'] ?></small></p>
-                                        <?php } ?>
-                                    </div>
-                                    <div class="mb-3">
-                                        <button class="btn btn-secondary" type="submit" name="login">Se connecter</button>
-                                    </div>
-                                </form>
-                            </div>
-                            <!-- ======================== INSCRIPTION ===========================-->
-                            <div class="tab-pane fade show active" id="register" role="tabpanel" aria-labelledby="register-tab">
-                                <form action="" method="POST">
-                                    <div class="mb-3">
-                                        <label for="civility">Vous êtes :</label>
-                                        <?php
-                                        foreach ($civilityList as $value => $text) { ?>
-                                            <label class="form-label" for="<?= $value ?>"><?= $text ?></label>
-                                            <input type="radio" <?= (isset($civility) && $civility == $value) ? 'checked' : ''; ?> value="<?= $value ?>" name="civility" />
-                                        <?php } ?>
-                                        <p small class="badge bg-danger"><?= (isset($formErrors['civility'])) ? $formErrors['civility'] : ''; ?></p>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="genre">Je cherche :</label>
-                                        <?php
-                                        foreach ($civilityList as $value => $text) { ?>
-                                            <label class="form-label" for="<?= $value ?>"><?= $text ?></label>
-                                            <input type="radio" <?= (isset($genre) && $genre == $value) ? 'checked' : ''; ?> value="<?= $value ?>" name="genre" />
-                                        <?php } ?>
-                                        <p small class="badge bg-danger"><?= (isset($formErrors['genre'])) ? $formErrors['genre'] : ''; ?></p>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="pseudo" class="form-label">Nom d'utilisateur : </label>
-                                        <input type="text" class="form-control <?= !isset($_POST['register']) ? null : (isset($formErrors['pseudo']) ? 'is-invalid' : 'is-valid') ?>" id="pseudo" name="pseudo" value="<?= !isset($pseudo) ? null : $pseudo ?>" />
-                                        <?php if (isset($formErrors['pseudo'])) { ?>
-                                            <p><small class="badge bg-danger"><?= $formErrors['pseudo'] ?></small></p>
-                                        <?php } ?>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="email" class="form-label">Adresse mail : </label>
-                                        <input type="email" class="form-control <?= !isset($_POST['register']) ? null : (isset($formErrorList['email']) ? 'is-invalid' : 'is-valid') ?>" id="email" name="email" value="<?= !isset($email) ? null : $email ?>" />
-                                        <?php if (isset($formErrors['email'])) { ?>
-                                            <p><small class="badge bg-danger"><?= $formErrors['email'] ?></small></p>
-                                        <?php } ?>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="password" class="form-label">Mot de passe: </label>
-                                        <input type="password" class="form-control <?= !isset($_POST['register']) ? null : (isset($formErrors['password']) ? 'is-invalid' : 'is-valid') ?>" id="password" name="password" value="<?= !isset($password) ? null : $password ?>" />
-                                        <?php if (isset($formErrors['password'])) { ?>
-                                            <p><small class="badge bg-danger"><?= $formErrors['password'] ?></small></p>
-                                        <?php } ?>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="dob" class="form-label">Date de naissance : </label>
-                                        <input type="date" class="form-control <?= !isset($_POST['register']) ? null : (isset($formErrors['dob']) ? 'is-invalid' : 'is-valid') ?>" id="dob" name="dob" value="<?= !isset($dob) ? null : $dob ?>" />
-                                        <?php if (isset($formErrors['dob'])) { ?>
-                                            <p><small class="badge bg-danger"><?= $formErrors['dob'] ?></small></p>
-                                        <?php } ?>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="city" class="form-label">Ville : </label>
-                                        <input type="text" class="form-control <?= !isset($_POST['register']) ? null : (isset($formErrors['city']) ? 'is-invalid' : 'is-valid') ?>" id="city" name="city" value="<?= !isset($city) ? null : $city ?>" />
-                                        <?php if (isset($formErrors['city'])) { ?>
-                                            <p><small class="badge bg-danger"><?= $formErrors['city'] ?></small></p>
-                                        <?php } ?>
-                                    </div>
-                                    <div class="mb-3">
-                                        <button class="btn btn-secondary" type="submit" name="register">S'enregistrer</button>
-                                    </div>
-                                </form>
-                            </div>
+                            <!-- ======================== include CONNEXION ===========================-->
+                            <?php include('connexion.inc.php'); ?>
+                            <!-- =============== INCLUDE INSCRIPTION =========================-->
+                            <?php include('register.inc.php'); ?>
                         </div>
                     </div>
                 </div>
-                 <img src="assets/img/lovers4x.png" alt="">
-                
+                <img src="assets/img/lovers4x.png" alt="">
             </div>
-        </div>
-    <?php } ?>
-    </section>
+            </div>
+        <?php } ?>
+        </section>
 </body>
+
 </html>
