@@ -1,0 +1,83 @@
+[
+    {
+       "id":"1",
+       "img":"guitar-01-classique.jpg",
+       "name":"Monterey Fender Stratocaster",
+       "desc":"Cultissime guitare",
+       "cat":"guitare",
+       "ref": 5442,
+       "price":2034
+    },
+    {
+       "id":"2",
+       "img":"guitar-02-blanche.jpg",
+       "name":"Gibson",
+       "desc":"Extraordinaire guitare",
+       "cat":"guitare",
+       "ref": 5442,
+       "price":1247
+    },
+    {
+        "id":"3",
+       "img":"guitar-02-noir.jpg",
+       "name":"Jaydee SG",
+       "desc":"Balle de guitare",
+       "cat":"guitare",
+       "ref": 5442,
+       "price":675
+    },
+    {
+       "id":"11",
+       "img":"bass-01-classique.jpg",
+       "name":"Fender Telecaster « Micawber »",
+       "desc":"Grosse déchire de guitare",
+       "cat":"basse",
+       "ref": 5442,
+       "price":842
+    },
+    {
+       "id":"12",
+       "img":"bass-01-electrique.jpg",
+       "name":"Kim Deal",
+       "desc":"Cultissime basse",
+       "cat":"basse",
+       "ref": 5442,
+       "price":2034
+    },
+    {
+       "id":"13",
+       "img":"bass-01-noir.jpg",
+       "name":"Peter Hook",
+       "desc":"Extraordinaire basse",
+       "cat":"basse",
+       "ref": 2442,
+       "price":1247
+    },
+    {
+       "id":"21",
+       "img":"ukelele-01-classique.jpg",
+       "name":"Kim Gordon",
+       "desc":"Balle de guitare",
+       "cat":"ukelele",
+       "ref": 6008,
+       "price":675
+    },
+    {
+       "id":"22",
+       "img":"ukelele-02-noir.jpg",
+       "name":"Flea »",
+       "desc":"Grosse déchire de guitare",
+       "cat":"ukelele",
+       "ref": 5442,
+       "price":842
+    },
+    {
+       "id":"23",
+       "img":"ukelele-03-double.jpg",
+       "name":"Ledward Kaapana",
+       "desc":"Cultissime guitare",
+       "cat":"ukelele",
+       "ref": 5442,
+       "price":2034
+    }
+ ]
